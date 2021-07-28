@@ -22,7 +22,7 @@ Este blog se encuentra disponible en el siguiente enlace: [Blagger](https://blag
 ## Desplegado con 🌍
 
 * [Heroku](https://www.heroku.com/) - Alojamiento en la nube
-* [jawsDB](https://www.jawsdb.com/) - Servidor MySQL en la nube
+* [JawsDB](https://www.jawsdb.com/) - Servidor MySQL en la nube
 * [HeidiSQL](https://www.heidisql.com/) - Gestión de base de datos remota
 
 ## Autor ✒️
