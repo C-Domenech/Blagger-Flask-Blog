@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Editando post - {% endblock %}
+
+{% block header %}
+    <br>
+    <h1>Editando tu post</h1>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <form method="post">
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input class="form-control" name="title" id="title" maxlength="150" value="{{ post['title'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="short_description">Descripción</label>
+            <textarea class="form-control" name="short_description" id="short_description" maxlength="250" rows="2"
+                      required>{{ post['short_description'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="content-editor">Contenido</label>
+            <textarea class="form-control" name="content-editor" id="content-editor" rows="20" required>{{ post['content'] }}</textarea>
+        </div>
+        <button name="edit_post_form" type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+
+    {# Script that generates an HTML editor in the text area #}
+    <script>
+        tinymce.init({
+            selector: 'textarea#content-editor',
+            menubar: false,
+            setup: function (editor) {
+                editor.on('change', function () {
+                    tinymce.triggerSave();
+                });
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    {% for post in posts %}
+        <div class="row">
+            <div class="col-sm-6 mx-auto">
+                {% if g.user['id_user'] == post['id_user'] %}
+                    <a class="float-right" href="{{ url_for('edit_post', id_post=post['id_post']) }}">Editar</a>
+                {% endif %}
+
+                <h2>{{ post['title'] }}</h2><br>
+                <div><a href="{{ url_for('posts_by_user', username=post['username']) }}"><strong>{{ post['username'] }}</strong></a>
+                    - {{ post['on_update_dt'].strftime('%a %d %B, %Y %H:%M') }}</div><br>
+                <p>{{ post['short_description'] }} <a
+                        href="{{ url_for('selected_post', id_post=post['id_post']) }}">Leer más...</a></p>
+
+                {% if not loop.last %}
+                    <hr>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    {{ pagination.links }}
+{% endblock %}

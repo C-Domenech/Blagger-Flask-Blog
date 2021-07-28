@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <title>{% block title %}{% endblock %}Blagger</title>
+    <link rel="icon" href="/static/logo_black.png">
+    <link rel="stylesheet" href="/static/style.css">
+    {# Bootstrap, jquery and popper libraries #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {# TinyMCE library that converts an textarea to HTML editor #}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="{{ url_for('index') }}" style="font-size: x-large">
+        <img src="/static/logo_white.png" class="d-inline-block align-middle mr-2" alt="">
+        Blagger</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            {% if g.user %}
+                <span class="navbar-text text-light px-2" style="font-size: large">Bienvenid@, {{ g.user['username'] }}!</span>
+                <li class="nav-item  px-2">
+                    <a class="nav-link" href="{{ url_for('new_post') }}" style="font-size: large">Nuevo post</a>
+                </li>
+                <li class="nav-item  px-2">
+                    <a class="nav-link" href="{{ url_for('logout') }}" style="font-size: large">Cerrar sesión</a>
+                </li>
+            {% else %}
+                <li class="nav-item  px-2">
+                    <a class="nav-link" href="{{ url_for('sign_up') }}" style="font-size: large">Únete</a>
+                </li>
+                <li class="nav-item  px-2">
+                    <a class="nav-link" href="{{ url_for('login') }}" style="font-size: large">Inicia sesión</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {# Show the message send by the flash method #}
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        <br>
+        <div class="alert {{ category }} alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            {# On click send to the function the current flash #}
+            <button type="button" class="close" aria-label="Close" onclick="delete_flash(this)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+    <br>
+</div>
+</body>
+
+<script>
+    // Funtion that removes a flash if the user clicks the close icon
+    function delete_flash(flash) {
+        $(flash).parent().remove()
+    }
+
+    // Function that removes slowly the flash message after a time until it appears
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.alert').fadeOut('slow'); // the alert disappears slowly
+        }, 4000); // <-- time in milliseconds
+    });
+</script>
+
+<footer class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container p-3 pb-0">
+        <section class="mb-2">
+            <!-- Twitter -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/cdomenech_" role="button"
+               target="_blank"><i class="fa fa-twitter"></i></a>
+            <!-- Linkedin -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://www.linkedin.com/in/c-domenech/"
+               role="button" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <!-- Github -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/C-Domenech" role="button"
+               target="_blank"><i class="fa fa-github"></i></a>
+        </section>
+    </div>
+    <div class="text-center p-3 text-light" style="background-color: rgba(0, 0, 0, 0.3);">
+        © 2021 Copyright -
+        <a class="text-light" href="http://thecrisdom.com/"  target="_blank">TheCrisdom.com</a>
+    </div>
+</footer>
+</html>

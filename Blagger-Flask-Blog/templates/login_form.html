@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicia tu aventura en {% endblock %}
+
+{% block header %}
+    <br>
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <h1>Inicia tu aventura en Blagger</h1>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <form method="post">
+
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input class="form-control" id="username" name="username" placeholder="Introduce tu usuario"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input class="form-control" type="password" name="password" id="password"
+                           placeholder="Introduce tu contraseña" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
