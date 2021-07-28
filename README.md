@@ -10,7 +10,7 @@ Este blog se encuentra disponible en el siguiente enlace: [Blagger](https://blag
 
 ## Construido con 🛠️
 
-* [Python](https://www.python.org/){:target="_blank"} - Lenguaje de programación
+* [Python](https://www.python.org/) - Lenguaje de programación
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Framework de Python para desarrollo web
 * [HTML5](https://es.wikipedia.org/wiki/HTML) - Lenguaje de marcado para desarrollo web
 * [Bootstrap](https://getbootstrap.com/) - Aspectos visuales y mejora de la interfaz
