@@ -13,7 +13,7 @@ Este blog se encuentra disponible en el siguiente enlace: [Blagger](https://blag
 * [Python](https://www.python.org/) - Lenguaje de programación
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Framework de Python para desarrollo web
 * [HTML5](https://es.wikipedia.org/wiki/HTML) - Lenguaje de marcado para desarrollo web
-* [Bootstrap](https://getbootstrap.com/) - Aspectos visuales y mejora de la interfaz
+* [Bootstrap4](https://getbootstrap.com/) - Aspectos visuales y mejora de la interfaz
 * [Flask-MySQLdb](https://flask-mysqldb.readthedocs.io/en/latest/) - Extensión de Flask para acceder a bases de datos MySQL
 * [MySQL Workbench](https://www.mysql.com/products/workbench/) - Diseño de la base de datos
 * [TinyMCE](https://www.tiny.cloud/) - Complemento WYSIWYG editor
